@@ -10,7 +10,7 @@ from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 
-df = pd.read_csv(r"F:/Longivity/Secondary/Task1_data.csv")   #Please change the path while executing
+df = pd.read_csv(r"Select your own path/file.csv")   #Please change the path while executing
 df.head()
 
 df.info()
@@ -35,13 +35,13 @@ X = df[['HbA1c', 'BMI', 'AGE', 'Chol', 'TG', 'VLDL']]
 y = df['CLASS']
 
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
-
 print("x_train is :", x_train.shape)
 print("x_test is :", x_test.shape)
 print("y_train is :", y_train.shape)
 print("y_test is :", y_test.shape)
 
 model = XGBClassifier()
+model.fit(x_train, y_train)
 
 y_pred = model.predict(x_test)
 print(y_pred)
